@@ -6,7 +6,7 @@ function All() {
 
 const [error, setError] = useState(null);
 const [searchMeal, setSearchMeal] = useState ('');
-const [mealis, setMealis] = useState(null)
+const [mealis, setMealis] = useState([])
   
    const search = () => { fetch(
       `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchMeal}`
@@ -44,15 +44,30 @@ setSearchMeal(e.target.value)
     
       <input
         type="text"
-        placeholder="Search"
+        placeholder="Please, write you meal here...."
         value={searchMeal}
         onChange={handleChange} 
-      ></input>
-      <button onClick={search}>SEARCH</button>
+         style={{
+          width: '472px',
+          height: '36px',
+          borderRadius: '10px',
+          marginLeft: '30px',
+          paddingLeft: '20px'
+         }}></input>
+      <button style={{
+        width: '150px',
+        height: '40px',
+        marginLeft: '30px'
+      }} onClick={search}>SEARCH</button>
+      <button style={{
+        width: '150px',
+        height: '40px',
+        marginLeft: '30px'
+      }} onClick={search}>SEARCH</button>
       </div>
       <div>
         {
-      mealis !== null ? mealis.map(meal => <div className='miskas'> <Single key={meal.idMeal} meal={meal}/></div>) : console.log("prašome palaukti")
+      mealis !== null ? mealis?.map(meal => <div className='miskas'> <Single key={meal.idMeal} meal={meal}/></div>) : console.log("prašome palaukti")
        }
     </div>
     </>
