@@ -4,24 +4,44 @@ import randColor from './Functions/randColor'
 import { useEffect, useState } from 'react';
 
 
+import Single from './Components/Single';
+
+
 function App() {
 
-//   useState [color, setColor ] = ('green')
+const [color, setColor ] = useState (null)
 
-// useEffect (() => {
-//   setColor(randColor())
-// }, [3000])
+
+
+useEffect(() => {
+  const timerId = setInterval(() => {
+      setColor(randColor());
+  }, 1500);
+  return () => {
+      clearInterval(timerId);
+  }
+}, []);
 
   return (
+  //   <BrowserRouter>
+  //   <Nav />
+  //   <Routes>
+  //     <Route path="/" element={<Home/>}></Route>
+  //     <Route path="/categories" element={<MainCat/>}></Route>
+  //      <Route path="/movies" element={<MainMovies/>}></Route>
+  //   </Routes>
+  // </BrowserRouter>
     <div className="App">
       <header className="App-header">
+        <div className='top-list'>
         <h1 style={{
-          color: randColor()
+          color: color,
+          marginLeft: '200px'
         }}>Easy meal preparation ideas for creative persons</h1>
+         
+        
+        </div>
        <All />
-       <h1 style={{
-          color: randColor()
-        }}>Delicious food recipes ideas only for you</h1>
       </header>
     </div>
   );

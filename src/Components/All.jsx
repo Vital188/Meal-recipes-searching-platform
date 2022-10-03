@@ -1,5 +1,7 @@
 import Single from './Single';
 import { useEffect, useState } from "react";
+import Food from '../Context/Food';
+import Create from './Create';
 
 
 function All() {
@@ -7,6 +9,8 @@ function All() {
 const [error, setError] = useState(null);
 const [searchMeal, setSearchMeal] = useState ('');
 const [mealis, setMealis] = useState([])
+
+
   
    const search = () => { fetch(
       `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchMeal}`
@@ -35,10 +39,16 @@ setSearchMeal(e.target.value)
 //     { 
 //  }, [meals])
 
-   
+const remove = () => {
+  setMealis([]);
+}   
  
 
   return (
+
+    <Food.Provider value={{
+      setMealis
+    }}>
     <>
     <div className='box'>
     
@@ -57,20 +67,24 @@ setSearchMeal(e.target.value)
       <button style={{
         width: '150px',
         height: '40px',
-        marginLeft: '30px'
+        marginLeft: '30px',
+        backgroundColor: "white"
       }} onClick={search}>SEARCH</button>
       <button style={{
         width: '150px',
         height: '40px',
-        marginLeft: '30px'
-      }} onClick={search}>SEARCH</button>
+        marginLeft: '30px',
+        backgroundColor: "white"
+      }} onClick={remove}>DELETE</button>
       </div>
       <div>
         {
       mealis !== null ? mealis?.map(meal => <div className='miskas'> <Single key={meal.idMeal} meal={meal}/></div>) : console.log("prašome palaukti")
        }
     </div>
+    {/* <Create /> */}
     </>
+    </Food.Provider>
   );
 }
 
