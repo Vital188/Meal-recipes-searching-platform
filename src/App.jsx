@@ -1,48 +1,57 @@
 import All from './Components/All';
 import './App.scss';
-import randColor from './Functions/randColor'
-import { useEffect, useState } from 'react';
-
-
-import Single from './Components/Single';
-
+import Create from './Components/Create'
+import {Routes, Route, useNavigate} from 'react-router-dom';
 
 function App() {
 
-const [color, setColor ] = useState (null)
 
 
+let navigate = useNavigate();
+const navigateToCreate = () => {
+  // 👇️ navigate to /Create
+  navigate('/Create');
+};
 
-useEffect(() => {
-  const timerId = setInterval(() => {
-      setColor(randColor());
-  }, 1500);
-  return () => {
-      clearInterval(timerId);
-  }
-}, []);
+const navigateToHome = () => {
+  // 👇️ navigate to /
+  navigate('/');
+};
 
   return (
-  //   <BrowserRouter>
-  //   <Nav />
-  //   <Routes>
-  //     <Route path="/" element={<Home/>}></Route>
-  //     <Route path="/categories" element={<MainCat/>}></Route>
-  //      <Route path="/movies" element={<MainMovies/>}></Route>
-  //   </Routes>
-  // </BrowserRouter>
     <div className="App">
-      <header className="App-header">
-        <div className='top-list'>
-        <h1 style={{
-          color: color,
-          marginLeft: '200px'
-        }}>Easy meal preparation ideas for creative persons</h1>
-         
-        
-        </div>
-       <All />
-      </header>
+    <header className="App-header">
+      <div className='boxs'>
+    <button onClick={navigateToHome} style={{
+      // height: '80px',
+      marginLeft: '100px',
+      fontSize: '25px',
+      marginTop: '60px',
+      cursor: 'pointer',
+      color: 'blue',
+      border: '2px solid crimson',
+      borderRadius: '10px',
+      padding: '20px'
+    }}>HOME PAGE
+    </button> 
+    <button onClick={navigateToCreate} style={{
+      // height: '80px',
+      marginLeft: '100px',
+      fontSize: '25px',
+      marginTop: '60px',
+      cursor: 'pointer',
+      color: 'blue',
+      border: '2px solid crimson',
+      borderRadius: '10px',
+      padding: '20px'
+    }}>FAVORITE RECEPIES LIST
+    </button>
+    </div>
+    <Routes>
+    <Route path="/create" element={<Create />} />
+    <Route path="/" element={<All/>} /> 
+    </Routes> 
+    </header>
     </div>
   );
 }

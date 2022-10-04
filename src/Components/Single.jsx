@@ -1,6 +1,4 @@
-import {Routes, Route, useNavigate} from 'react-router-dom';
-import Create from './Create';
-import {BrowserRouter} from 'react-router-dom'
+
 
 
 function Single({ meal }) {
@@ -19,50 +17,11 @@ function Single({ meal }) {
   //     setRutul(JSON.parse(k))}
   // }, [])
 
-  let navigate = useNavigate();
-  const navigateToCreate = () => {
-    // 👇️ navigate to /Create
-    navigate('/Create');
-  };
-  
-  const navigateToHome = () => {
-    // 👇️ navigate to /
-    navigate('/');
-  };
+
     
   return (
     <div>
-    <button onClick={navigateToCreate} style={{
-      height: '80px',
-      marginLeft: '100px',
-      fontSize: '25px',
-      marginTop: '60px',
-      cursor: 'pointer',
-      color: 'blue',
-      border: '2px solid crimson',
-      borderRadius: '10px',
-      padding: '10px'
-    }}>FAVORITE RECEPIES LIST
-    </button>
     
-    <button onClick={navigateToHome} style={{
-      height: '80px',
-      marginLeft: '100px',
-      fontSize: '25px',
-      marginTop: '60px',
-      cursor: 'pointer',
-      color: 'blue',
-      border: '2px solid crimson',
-      borderRadius: '10px',
-      padding: '10px'
-    }}>Home
-    </button> 
-    <BrowserRouter>
-    <Routes>
-    <Route path="/create" element={<Create />} />
-       <Route path="/" element={<Single/>} /> 
-    </Routes> 
-    </BrowserRouter>
     <div style={{
         border: '2px solid black',
         margin: '20px'
