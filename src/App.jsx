@@ -22,11 +22,11 @@ const navigateToHome = () => {
     <div className="App">
     <header className="App-header">
       <div className='boxs'>
+        <svg> <use xlinkHref="#food"></use></svg>
     <button onClick={navigateToHome} style={{
       // height: '80px',
-      marginLeft: '100px',
-      fontSize: '25px',
-      marginTop: '60px',
+           fontSize: '25px',
+      marginTop: '50px',
       cursor: 'pointer',
       color: 'blue',
       border: '2px solid crimson',
@@ -36,9 +36,9 @@ const navigateToHome = () => {
     </button> 
     <button onClick={navigateToCreate} style={{
       // height: '80px',
-      marginLeft: '100px',
+      marginLeft: '50px',
       fontSize: '25px',
-      marginTop: '60px',
+      marginTop: '50px',
       cursor: 'pointer',
       color: 'blue',
       border: '2px solid crimson',
@@ -46,6 +46,7 @@ const navigateToHome = () => {
       padding: '20px'
     }}>FAVORITE RECEPIES LIST
     </button>
+    <svg> <use xlinkHref="#food2"></use></svg>
     </div>
     <Routes>
     <Route path="/create" element={<Create />} />
