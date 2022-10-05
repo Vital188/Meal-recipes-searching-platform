@@ -1,24 +1,17 @@
 
-
-
 function Single({ meal }) {
 
-  // useEffect (() => {
-  //   if (  null === add ) {
-  //     return;}
-  //    localStorage.setItem('info', JSON.stringify(add));
-  // }, [add])
 
 
-  //  useEffect (() => {
-  // const k = localStorage.getItem('info')
-  // if ( null === k) {
-  //   setRutul([])} else {
-  //     setRutul(JSON.parse(k))}
-  // }, [])
+const add = (mealas) => {
+  let fav = [];
+  if(localStorage.getItem('favourite')){
+    fav = JSON.parse(localStorage.getItem('favourite'))
+  }
+  fav.push(mealas)
+  localStorage.setItem('favourite', JSON.stringify(fav))
+};  
 
-
-    
   return (
     <div>
     
@@ -70,7 +63,7 @@ function Single({ meal }) {
           <li>{meal.strIngredient8}</li>
         </ul>
       </div>
-      <button  style={{
+      <button onClick={() => add(meal)} style={{
             cursor: 'pointer'
       }}>ADD INTO FAVORITE LIST</button>
     </div>
