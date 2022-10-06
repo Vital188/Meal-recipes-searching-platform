@@ -52,7 +52,12 @@ setSearchMeal(e.target.value)
 const remove = () => {
   setMealis([]);
 }   
- 
+ const handleEnter = (e) => {
+  console.log(e.key)
+  if (e.key === "Enter")
+  {setSearchMeal(e.target.value)
+  search()}
+ }
 
   return (
 
@@ -72,7 +77,8 @@ const remove = () => {
         type="text"
         placeholder="Please, write you meal here...."
         value={searchMeal}
-        // onKeyPress={(e) => e.key === 13 ()}
+        onKeyPress={ (e) => {
+         handleEnter(e)}}
         onChange={handleChange} 
          style={{
           width: '472px',
